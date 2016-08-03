@@ -3,7 +3,7 @@
 The included python script simply takes an Ising spin glass Hamiltonian and guesses random configurations. The lowest energy guess is printed to the screen, preceeded by a 'v'.
 
     bash:~$ python demo.py example.txt
-    v 0 1 0 0 1 ...
+    v -1 1 1 -1  ...
 
 To use it on Mindi, you will first need to install Docker (see these [excellent instructions](https://docs.docker.com/engine/installation/)).
 
