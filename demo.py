@@ -4,8 +4,8 @@ import sys, random, numpy
 # Evaluate the energy given a coupling matrix and configuration
 def evaluate_energy(J, cfg):
     tot = 0
-    for i in range(len(cfg)-1):
-        for j in range(len(cfg)):
+    for i in range(len(cfg)):
+        for j in range(i+1, len(cfg)):
             tot += J[i,j]*cfg[i]*cfg[j]
     return tot
 
@@ -16,8 +16,11 @@ with open(sys.argv[1], 'r') as f:
     for line in f:
         line = line.split()
         spin_a, spin_b, coupling = int(line[0]), int(line[1]), float(line[2])
-        J[spin_a,spin_b] = coupling
-        J[spin_b,spin_a] = coupling
+        assert(spin_a != spin_b)
+        if (spin_a < spin_b):
+            J[spin_a,spin_b] = coupling
+        else:
+            J[spin_b,spin_a] = coupling
 
 # Solve for minimum spin configuration (by random guessing)
 min_energy = 1.e9
