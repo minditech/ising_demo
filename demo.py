@@ -9,6 +9,8 @@ def evaluate_energy(J, cfg):
             tot += J[i,j]*cfg[i]*cfg[j]
     return tot
 
+sys.exit(1)
+
 # Read coupling matrix
 N = 300
 J = numpy.zeros((N,N))
